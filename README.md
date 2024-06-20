@@ -1,7 +1,7 @@
-# @reactioncommerce/components-context
+# @bugslifesolutions/components-context
 
-![npm (scoped)](https://img.shields.io/npm/v/@reactioncommerce/components-context.svg)
- [![CircleCI](https://circleci.com/gh/reactioncommerce/components-context.svg?style=svg)](https://circleci.com/gh/reactioncommerce/components-context)
+![npm (scoped)](https://img.shields.io/npm/v/@bugslifesolutions/components-context.svg)
+ [![CircleCI](https://circleci.com/gh/bugslifesolutions/components-context.svg?style=svg)](https://circleci.com/gh/bugslifesolutions/components-context)
 
 A system for injecting React components into other React components from a central components context.
 
@@ -10,7 +10,7 @@ This package allows your component to have all of its component dependencies inj
 ## Install
 
 ```sh
-npm install @reactioncommerce/components-context
+npm install @bugslifesolutions/components-context
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ _SaveButton.js_
 ```jsx
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withComponents } from "@reactioncommerce/components-context";
+import { withComponents } from "@bugslifesolutions/components-context";
 
 class SaveButton extends Component {
   static propTypes = {
@@ -66,7 +66,7 @@ export default MyPage;
 _appComponents.js_
 
 ```js
-import Button from "@reactioncommerce/components/Button/v1";
+import Button from "@bugslifesolutions/components/Button/v1";
 
 export default {
   Button
@@ -78,7 +78,7 @@ _App.js_
 ```jsx
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { ComponentsProvider } from "@reactioncommerce/components-context";
+import { ComponentsProvider } from "@bugslifesolutions/components-context";
 import appComponents from "./appComponents";
 import MyPage from "./MyPage";
 
@@ -109,7 +109,7 @@ Examples of commit messages: https://github.com/semantic-release/semantic-releas
 
 ## Publication to NPM
 
-The `@reactioncommerce/components-context` package is automatically published by CI when commits are merged or pushed to the `master` branch. This is done using [semantic-release](https://www.npmjs.com/package/semantic-release), which also determines version bumps based on conventional Git commit messages.
+The `@bugslifesolutions/components-context` package is automatically published by CI when commits are merged or pushed to the `master` branch. This is done using [semantic-release](https://www.npmjs.com/package/semantic-release), which also determines version bumps based on conventional Git commit messages.
 
 ## License
 

@@ -1,5 +1,5 @@
 {
-  "name": "@reactioncommerce/components-context",
+  "name": "@bugslifesolutions/components-context",
   "version": "0.0.0-development",
   "description": "A system for injecting React components into other React components from a central components context",
   "main": "./dist/main.js",
@@ -11,21 +11,21 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reactioncommerce/components-context.git"
+    "url": "git+https://github.com/bugslifesolutions/components-context.git"
   },
   "author": "Mailchimp Open Commerce <hello-open-commerce@mailchimp.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/reactioncommerce/components-context/issues"
+    "url": "https://github.com/bugslifesolutions/components-context/issues"
   },
-  "homepage": "https://github.com/reactioncommerce/components-context#readme",
+  "homepage": "https://github.com/bugslifesolutions/components-context#readme",
   "dependencies": {
     "hoist-non-react-statics": "^3.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "7.0.0",
     "@commitlint/config-conventional": "7.0.1",
-    "@reactioncommerce/eslint-config": "2.2.1",
+    "@bugslifesolutions/eslint-config": "2.2.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
@@ -63,7 +63,7 @@
     "sourceMaps": true
   },
   "eslintConfig": {
-    "extends": "@reactioncommerce",
+    "extends": "@bugslifesolutions",
     "rules": {
       "react/display-name": "off",
       "react/prop-types": "off",
