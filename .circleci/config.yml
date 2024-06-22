@@ -1,66 +1,46 @@
+# Required reaction-publish-semantic-release context variables:
+#  NPM_TOKEN
 version: 2
+
+_defaults: &defaults
+  docker:
+    - image: cimg/node:14.21.3
+  steps:
+    - checkout
+
+_restore_cache: &restore_cache
+  restore_cache:
+    keys:
+      - v1-dependencies-{{ checksum "package.json" }}
+      - v1-dependencies-
+
 jobs:
   build:
-    docker:
-      - image: node:12.14.1
-
-    dependencies:
-      pre:
-        - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-
+    <<: *defaults
     steps:
-      - checkout
-
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
       - run: npm ci
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
   deploy:
-    docker:
-      - image: node:12.14.1
-
+    <<: *defaults
     steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
+      - *restore_cache
       - run: npx semantic-release
 
   lint:
-    docker:
-      - image: node:12.14.1
-
+    <<: *defaults
     steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
+      - *restore_cache
       - run: npm run lint
 
   test:
-    docker:
-      - image: node:12.14.1
-
+    <<: *defaults
     steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
+      - *restore_cache
       - run: npm run test
 
 workflows:
@@ -68,7 +48,8 @@ workflows:
   build_deploy:
     jobs:
       - build:
-          context: reaction-publish-semantic-release
+          context:
+            - reaction-publish-semantic-release
       - lint:
           requires:
             - build
@@ -76,7 +57,8 @@ workflows:
           requires:
             - build
       - deploy:
-          context: reaction-publish-semantic-release
+          context:
+            - reaction-publish-semantic-release
           requires:
             - lint
             - test
