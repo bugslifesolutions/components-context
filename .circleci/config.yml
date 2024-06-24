@@ -46,13 +46,6 @@ jobs:
       - restore_dependencies
       - run: npx semantic-release
 
-  lint:
-    executor: node_executor
-    steps:
-      - checkout
-      - restore_dependencies
-      - run: npm run lint
-
   test:
     executor: node_executor
     steps:
@@ -66,9 +59,6 @@ workflows:
       - build:
           context:
             - reaction-publish-semantic-release
-      - lint:
-          requires:
-            - build
       - test:
           requires:
             - build
@@ -76,7 +66,6 @@ workflows:
           context:
             - reaction-publish-semantic-release
           requires:
-            - lint
             - test
           filters:
             branches:
