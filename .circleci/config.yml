@@ -44,7 +44,7 @@ jobs:
       - checkout
       - setup_npm_auth
       - restore_dependencies
-      - run: npm build
+      - run: npm run build
       - run: npx semantic-release
 
   test:
