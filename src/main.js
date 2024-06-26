@@ -12,7 +12,7 @@ function wrapDisplayName(HOC, WrappedComponent) {
   HOC.displayName = `WithComponents(${innerDisplayName})`;
 }
 
-const ComponentsContext = React.createContext();
+export const ComponentsContext = React.createContext();
 
 export const ComponentsProvider = ComponentsContext.Provider;
 
